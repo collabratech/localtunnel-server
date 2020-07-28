@@ -1,0 +1,14 @@
+[Unit]
+Description=Collabra LocalTunnel Server
+After=network-online.target
+
+[Service]
+Environment=LOCALTUNNEL_DOMAIN=t.collabra.io
+Environment=LOCALTUNNEL_PORT=3000
+Type=simple
+Restart=on-failure
+WorkingDirectory=/collabra/localtunnel-server/
+ExecStart=/usr/bin/node -r esm bin/server --port $LOCALTUNNEL_PORT --domain $LOCALTUNNEL_DOMAIN
+
+[Install]
+WantedBy=multi-user.target
