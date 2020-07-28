@@ -6,6 +6,7 @@ After=network-online.target
 Environment=LOCALTUNNEL_DOMAIN=t.collabra.io
 Environment=LOCALTUNNEL_PORT=3000
 Type=simple
+User=localtunnel
 Restart=on-failure
 WorkingDirectory=/collabra/localtunnel-server/
 ExecStart=/usr/bin/node -r esm bin/server --port $LOCALTUNNEL_PORT --domain $LOCALTUNNEL_DOMAIN
